@@ -1,39 +1,34 @@
-import React, { useState, useEffect } from "react"
+function Square({ player, setPlayer, id, setXSquares, setOSquares, gameWon, showX, showO }) {
 
-function Square ({  player, setPlayer, id, setXSquares, setOSquares, handleWin, xSquares, oSquares  }) {
+  const handleSquareClick = (e) => {
+    if (showX || showO) {
+      return;
+    } else if (player === "one") {
+      setPlayer("two");
+      console.log("id = ", e.target.id);
+      console.log(showX);
+      console.log(id);
+      setXSquares((xSquares) => [...xSquares, e.target.id]);
+    } else {
+        setPlayer("one");
+        console.log("id = ", e.target.id);
+        console.log(showO);
+        console.log(id);
+      setOSquares((oSquares) => [...oSquares, e.target.id]);
+    }
+  };
 
-    const [showX, setShowX] = useState(false);
-    const [showO, setShowO] = useState(false);
-
-    const handleSquareClick = (e) => {
-        
-        if(showX || showO) {
-            return;
-            
-        } else if(player === "one"){
-            setShowX(true);
-            setPlayer("two");
-            console.log("id = ", e.target.id)
-            setXSquares(xSquares => [...xSquares, e.target.id])
-        } else {
-            setShowO(true);
-            setPlayer("one");
-            console.log("id = ", e.target.id)
-            setOSquares(oSquares => [...oSquares, (e.target.id)
-            ])
-        };
-         
-    };
-
-    
-
-    return (
-
-        <div className="square"  id={id} onClick= {(e) => handleSquareClick(e)}>
-            {showX ? "X" : "" }
-            {showO ? "O" : ""}   
-        </div>
-    )
+  return gameWon === true ? (
+    <div className="square" id={id}>
+      {showX ? "X" : ""}
+      {showO ? "O" : ""}
+    </div>
+  ) : (
+    <div className="square" id={id} onClick={(e) => handleSquareClick(e)}>
+      {showX ? "X" : ""}
+      {showO ? "O" : ""}
+    </div>
+  );
 }
 
-export default Square
+export default Square;
