@@ -8,7 +8,7 @@ function App() {
   const [xSquares, setXSquares] = useState([]);
   const [oSquares, setOSquares] = useState([]);
   const [gameWon, setGameWon] = useState(false);
-  const [player, setPlayer] = useState("one");
+  const [player, setPlayer] = useState("One");
   const [score, setScore] = useState({
     playerOne: 0,
     playerTwo: 0,
@@ -18,14 +18,14 @@ function App() {
     setOSquares([]);
     setXSquares([]);
     setGameWon(false);
-    setPlayer("one")
+    setPlayer("One")
   }
 
   function handleReset() {
     setOSquares([]);
     setXSquares([]);
     setGameWon(false);
-    setPlayer("one")
+    setPlayer("One")
     setScore({
       playerOne: 0,
       playerTwo: 0
@@ -34,7 +34,7 @@ function App() {
 
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-300 to-blue-600 relative">
+    <main className="min-h-screen bg-gradient-to-br from-blue-700 to-blue-400 relative">
       <div>
         <Header 
         player={player}

@@ -3,18 +3,18 @@ function Square({ player, setPlayer, id, setXSquares, setOSquares, gameWon, show
   const handleSquareClick = (e) => {
     if (showX || showO) {
       return;
-    } else if (player === "one") {
-      setPlayer("two");
+    } else if (player === "One") {
       console.log("id = ", e.target.id);
       console.log(showX);
       console.log(id);
       setXSquares((xSquares) => [...xSquares, e.target.id]);
+     setPlayer("Two");
     } else {
-        setPlayer("one");
-        console.log("id = ", e.target.id);
-        console.log(showO);
-        console.log(id);
+      console.log("id = ", e.target.id);
+      console.log(showO);
+      console.log(id);
       setOSquares((oSquares) => [...oSquares, e.target.id]);
+       setPlayer("One");
     }
   };
 
