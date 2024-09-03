@@ -19,12 +19,12 @@ function Square({ player, setPlayer, id, setXSquares, setOSquares, gameWon, show
   };
 
   return gameWon === true ? (
-    <div className="square" id={id}>
+    <div className=" bg-blue-600 hover:bg-blue-800  text-slate-50 text-4xl cursor-pointer rounded-lg shadow-[0_4px_6px_rgba(0,0,0,0.1)] flex items-center justify-center w-28 h-28" id={id}>
       {showX ? "X" : ""}
       {showO ? "O" : ""}
     </div>
   ) : (
-    <div className="square" id={id} onClick={(e) => handleSquareClick(e)}>
+    <div className=" bg-blue-600 hover:bg-blue-800 text-slate-50 text-4xl cursor-pointer rounded-lg shadow-[0_4px_6px_rgba(0,0,0,0.1)] flex items-center justify-center w-28 h-28" id={id} onClick={(e) => handleSquareClick(e)}>
       {showX ? "X" : ""}
       {showO ? "O" : ""}
     </div>

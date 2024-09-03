@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Square from "./Square";
 
-function GameBoard({ player, setPlayer, setScore }) {
+function GameBoard({ player, setPlayer, setScore, oSquares, xSquares, setOSquares, setXSquares, gameWon, setGameWon }) {
   const winningArrays = [
     [0, 1, 2],
     [3, 4, 5],
@@ -13,9 +13,7 @@ function GameBoard({ player, setPlayer, setScore }) {
     [2, 4, 6],
   ];
   const squareArr = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-  const [xSquares, setXSquares] = useState([]);
-  const [oSquares, setOSquares] = useState([]);
-  const [gameWon, setGameWon] = useState(false);
+ 
 
   useEffect(() => {
     for (let array of winningArrays) {
@@ -39,33 +37,13 @@ function GameBoard({ player, setPlayer, setScore }) {
     }
   }, [xSquares, oSquares]);
 
-  function handlePlayAgain() {
-    setOSquares([]);
-    setXSquares([]);
-    setGameWon(false);
-  }
-
-  function handleReset() {
-    setOSquares([]);
-    setXSquares([]);
-    setGameWon(false);
-    setScore({
-      playerOne: 0,
-      playerTwo: 0
-    });
-  }
 
   return (
-    <main>
-      {gameWon && (
-        <div className="buttons">
-          <span onClick={handlePlayAgain}>PLAY AGAIN</span>
-          <span onClick={handleReset}>RESET</span>
-        </div>
-      )}
-      <p>{xSquares}</p>
-      <p>{oSquares}</p>
-      <div className="board">
+    <section className=" bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 rounded-lg shadow-lg py-10 ">
+
+      {/* <p>{xSquares}</p>
+      <p>{oSquares}</p> */}
+      <div className="grid grid-cols-3 justify-center items-center gap-3 px-10">
         {squareArr.map((item, i) => {
           let showX 
            xSquares.includes(item.toString()) ? showX = true : showX = false;
@@ -88,7 +66,7 @@ function GameBoard({ player, setPlayer, setScore }) {
           );
         })}
       </div>
-    </main>
+    </section>
   );
 }
 

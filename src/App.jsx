@@ -1,31 +1,70 @@
-
+import Header from "./components/Header";
+import ScoreBoard from "./components/ScoreBoard";
 import GameBoard from "./components/GameBoard";
-import Header from "./components/Header"
-import React, {useState } from "react"
+import { useState } from "react";
 
 function App() {
 
+  const [xSquares, setXSquares] = useState([]);
+  const [oSquares, setOSquares] = useState([]);
+  const [gameWon, setGameWon] = useState(false);
   const [player, setPlayer] = useState("one");
-  const [score,setScore]  = useState({
+  const [score, setScore] = useState({
     playerOne: 0,
-    playerTwo: 0
-  })
+    playerTwo: 0,
+  });
+
+  function handlePlayAgain() {
+    setOSquares([]);
+    setXSquares([]);
+    setGameWon(false);
+    setPlayer("one")
+  }
+
+  function handleReset() {
+    setOSquares([]);
+    setXSquares([]);
+    setGameWon(false);
+    setPlayer("one")
+    setScore({
+      playerOne: 0,
+      playerTwo: 0
+    });
+  }
+
 
   return (
-    <>
-      <Header 
+    <main className="min-h-screen bg-gradient-to-br from-blue-300 to-blue-600 relative">
+      <div>
+        <Header 
         player={player}
-        score={score}
-      />
-      
-      <main>
-      <GameBoard 
-        player={player} 
-        setPlayer={setPlayer}
-        setScore={setScore}
-      />
-      </main>
-    </>
+        handleReset={handleReset}
+        handlePlayAgain={handlePlayAgain}
+        gameWon={gameWon}
+         />
+      </div>
+      <div className="w-full min-h-60 flex flex-row justify-around items-center fixed bottom-14">
+       
+        <div className="min-h-full min-w-90 p-10">
+          <ScoreBoard score={score} />
+        </div>
+
+        <div className="min-h-full min-w-90 px-10">
+          <GameBoard
+            player={player}
+            setPlayer={setPlayer}
+            setScore={setScore}
+            oSquares={oSquares}
+            xSquares={xSquares}
+            setOSquares={setOSquares}
+            setXSquares={setXSquares}
+            gameWon={gameWon}
+            setGameWon={setGameWon}
+          />
+
+        </div>
+      </div>
+    </main>
   );
 }
 

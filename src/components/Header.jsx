@@ -1,12 +1,17 @@
 import React from 'react';
 
-function Header({player,score}) {
+function Header({player, handleReset, handlePlayAgain, gameWon}) {
   return (
-    <div className="header">
+    <div className="flex flex-col items-center gap-10 justify-between p-10">
       <h1>TIC TAC TOE</h1>
-      <h2>Player {player} - Your turn!!</h2>
-      <h2>Player One Score: {score.playerOne}</h2>
-      <h2>Player Two Score: {score.playerTwo}</h2>
+      {!gameWon && <h2>Player {player} - Your turn!!</h2>}
+      {gameWon && (
+        <div className="">
+          <span onClick={handlePlayAgain}>PLAY AGAIN</span>
+          <span onClick={handleReset}>RESET</span>
+        </div>
+      )}
+    
     </div>
   );
 }
