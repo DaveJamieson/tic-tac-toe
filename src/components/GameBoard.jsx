@@ -39,11 +39,11 @@ function GameBoard({ player, setPlayer, setScore, oSquares, xSquares, setOSquare
 
 
   return (
-    <section className=" bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 rounded-lg shadow-lg py-10 ">
+    <section className=" bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 rounded-lg shadow-lg md:py-10 p-1 mx-1 mb-5">
 
       {/* <p>{xSquares}</p>
       <p>{oSquares}</p> */}
-      <div className="grid grid-cols-3 justify-center items-center gap-3 px-10">
+      <div className="grid grid-cols-3 justify-center items-center gap-3 p-2 md:px-10">
         {squareArr.map((item, i) => {
           let showX 
            xSquares.includes(item.toString()) ? showX = true : showX = false;

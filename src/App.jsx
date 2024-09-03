@@ -43,13 +43,15 @@ function App() {
         gameWon={gameWon}
          />
       </div>
-      <div className="w-full min-h-60 flex flex-row justify-around items-center fixed bottom-14">
+      <div className="w-full min-h-60 flex flex-col md:flex-row justify:stretch md:justify-around items-center md:fixed md:bottom-14">
        
-        <div className="min-h-full min-w-90 p-10">
-          <ScoreBoard score={score} />
+        <div className="min-h-full min-w-90 p-6 md:p-10">
+          <ScoreBoard score={score} 
+            gameWon={gameWon}
+          />
         </div>
 
-        <div className="min-h-full min-w-90 px-10">
+        <div className="min-h-full min-w-90 md:px-10 ">
           <GameBoard
             player={player}
             setPlayer={setPlayer}
